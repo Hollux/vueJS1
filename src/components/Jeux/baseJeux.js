@@ -35,16 +35,16 @@ function intActiArray (array) {
 
 // nettoyage des charactères spéciaux
 function textClean (val) {
-  var val = val.split('')
+  var valSplit = val.split('')
   var valOut = []
-  var valLen = val.length
+  var valLen = valSplit.length
   var accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž'
   var accentsOut = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz'
   for (var y = 0; y < valLen; y++) {
-    if (accents.indexOf(val[y]) !== -1) {
-      valOut[y] = accentsOut.substr(accents.indexOf(val[y]), 1)
+    if (accents.indexOf(valSplit[y]) !== -1) {
+      valOut[y] = accentsOut.substr(accents.indexOf(valSplit[y]), 1)
     } else {
-      valOut[y] = val[y]
+      valOut[y] = valSplit[y]
     }
   }
   valOut = valOut.join('')

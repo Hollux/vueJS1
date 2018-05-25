@@ -1,4 +1,4 @@
-# jeuxvuejs
+# vueJS1
 
 > A Vue.js project
 

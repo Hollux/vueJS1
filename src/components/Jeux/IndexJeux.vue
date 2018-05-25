@@ -1,11 +1,24 @@
 <template>
   <div id="jeux">
     <h1>{{ h1 }}</h1>
-    <p>{{ textAccueil }}</p>
+    <div v-html="textAccueil"></div>
+
     <br>
     <div class="row text-center">
       <div class="col-sm-6"><img v-bind:src="'/static/jeux/' + numbrImg +'.jpg'" alt="imgMinima"></div>
       <div class="col-sm-6">
+        <div>
+          <b-form-group>
+            <b-form-radio-group id="btnradios1"
+                                buttons
+                                button-variant="outline-primary"
+                                size="ls"
+                                v-model="jversion"
+                                :options="options"
+                                name="radiosBtnDefault" />
+          </b-form-group>
+        </div>
+        {{ jversion }}
         <div>
           <input id="response" v-model="response" v-on:keyup.enter="clientResp" placeholder="Votre réponse">
           <div v-on:click="clientResp" class="btn btn-success">Valider</div>
@@ -45,12 +58,20 @@ export default {
       this.$router.push('jeuxEnd')
     }
     return {
-      h1: 'Bienvenue sur mon site en Vue.js',
-      textAccueil: 'Bienvenue sur le mini Quizz cinéma, es que vous arrivez à reconnaitre ces films ?',
+      h1: 'Bienvenue sur le mini quizz cinéma',
+      textAccueil: '<p>Les règles sont simple :</p>' +
+      '<p>- Titre basique, jamais de nom précis du titre (ex: Harry Potter et non ' +
+      'Harry Potter et la coupe de feu).</p>' +
+      '<p>- Chaque Detail Est IMPORTANT</p>',
       numbrImg: ArrayActiv[intQuestion][0],
       score: arrayScore[0],
       total: arrayScore[1],
-      response: ''
+      response: '',
+      jversion: '40',
+      options: [
+        { text: 'Long', value: '40' },
+        { text: 'Court', value: '5' }
+      ]
     }
   },
   methods: {
